@@ -16,6 +16,10 @@
             color: $red;
         }
 }
+.header__box{
+    display: flex;
+    align-items: center;
+}
 .header__btn{
     padding: 4px;
     width: 72px;
@@ -27,7 +31,17 @@
 .header__btn-login{
     background-color: $green;
 }
-.header__btn-register{
+.header__btn-login--off{
+    display: none;
+}
+.header__btn-logout{
+    display: none;
+    &.header__btn-login--on{
+        display: block;
+    }
+}
+.header__btn-register,
+.header__btn-logout{
     background-color: $red;
     margin-left: 7px;
 }
@@ -51,7 +65,334 @@
         font-size: 14px;
     }
 }
+.header__circle{
+    &.active{
+        display: block;
+    }
+    display: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    position: relative;
+    &::before{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #a0a0a0;
+        font-size: 14px;
+    }
+    span{
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 18px;
+        right: -7px;
+        top: -7px;
+        font-size: 11px;
+        color: #fff;
+    }
+}
+.notification{
+    span{
+        background-color: $yellow;
+    }
+}
+.message{
+    span{
+        background-color: $tomato;
+    }
+}
+.basket{
+    margin-right: 20px;
+    span{
+        background-color: $green;
+    }
+}
+.user__box,
+.basket__box,
+.notification__box,
+.message__box{
+    position: relative;
+    height: 90px;
+    margin-top: 40px;
+    &:hover{
+        .user__menu{
+            height: auto;
+            border-width: 1px;
+            padding: 20px;
+        }
+    }
+}
+.basket__box,
+.notification__box,
+.message__box{
+    margin-top: 54px;
+    margin-left: 15px;
+    &:hover{
+        .header__circle::before{
+            color: $bg;
+        }
+        .circle__menu{
+            height: auto;
+            width: auto;
+        }
+        .circle__item{
+            padding: 23px;
+        }
+    }
+}
+.user{
+    margin-right: 25px;
+    padding-right: 20px;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '\f107';
+        font-family: 'icomoon';
+        font-size: 16px;
+        color: #707070;
+        right: 0;
+        top: 0;
+    }
+    &__inner{
+        display: flex;
+        align-items: center;
+    }
+    &__image{
+        margin-right: 15px;
+        width: 34px;
+        height: 34px;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    &__info{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    &__name{
+        @include f500;
+        color: #222;
+    }
+    &__money{
+        @include f700;
+        color: $green;
+    }
+}
+.user__menu{
+    border: 0px solid rgb(204, 204, 204);
+    position: absolute;
+    background-color: #fff;
+    padding: 0 20px;
+    width: 158px;
+    top: 69px;
+    left: 20px;
+    transition: all .3s;
+    height: 0;
+    overflow: hidden;
+    a{
+        font-size: 12px;
+        color: #546e7a;
+        margin-bottom: 15px;
+    }
+}
+.circle__menu{
+    position: absolute;
+    top: 62px;
+    right: 0;
+    border-top: 1px solid #e0e0e0;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s;
+    width: 0;
+    z-index: 2;
+}
+.circle__item{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    padding: 0 23px;
+    display: flex;
+    align-items: center;
+    width: 269px;
+    position: relative;
+    transition: all .3s;
+    &::before{
+        position: absolute;
+        right: 28px;
+        top: 27px;
+        color: #b0bec5;
+        font-size: 16px;
+    }
+}
+.circle__image{
+    padding-right: 15px;
+}
+.circle__info-name{
+    @include f500;
+    color: $bg
+}
+.circle__info-theme{
+    font-size: 12px;
+    color: $green;
+}
+.circle__info-price{
+    @include f500;
+    color: #000;
+    font-size: 16px;
+}
+.circle__info-date{
+    font-size: 10px;
+    color: #707070;
+}
+.basket__summ{
+    padding: 16px 17px 12px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    background-color: #fff;
+}
+.basket__title{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 13px;
+    padding-right: 22px;
+    margin-bottom: 15px;
+    @include f700;
+    font-size: 16px;
+    color: $bg;
+}
+.basket__btn{
+    @include f700;
+    color: #fff;
+    font-size: 14px;
+    padding: 12px 5px;
+    background-color: $green;
+    text-align: center;
+    width: 100px;
+}
+.basket__btn-checkout{
+    width: 120px;
+    margin-left: 6px;
+    background-color: $red;
+}
+.notification__menu,
+.message__menu{
+    .circle__image{
+        margin-right: 20px;
+        height: 48px;
+    }
+    .circle__info{
+        line-height: 18px;
+    }
+}
+.icons__color::before{
+    color: $tomato;
+}
+.header__btn-menu,
+.menu__btn{
+    display: none;
+}
 /* end header */
+
+/* start modal */
+#modal{
+    background-color: $green;
+    max-width: 730px;
+    width: 100%;
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
+.login__title{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 48px;
+    margin-bottom: 40px;
+    color: #fff;
+    @include f700;
+}
+.login__wrapper{
+    form{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    label{
+        position: relative;
+        display: block;
+        width: 100%;
+        &::before{
+            position: absolute;
+            font-family: 'icomoon';
+            font-size: 14px;
+            color: #fff;
+            left: 18px;
+            top: 9px;
+        }
+    }
+    .login__lable-name::before{
+        content: "\f007";
+    }
+    .login__lable-pass::before{
+        content: "\f023";
+    }
+    input{
+        height: 43px;
+        margin-bottom: 8px;
+        border: none;
+        background-color: #76ae36;
+        color: #fff;
+        font-size: 14px;
+        padding-left: 40px;
+        display: block;
+        width: 100%;
+        &::placeholder{
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+    button{
+        margin-top: 19px;
+        padding: 18px 0 16px;
+        background-color: #fff;
+        width: 140px;
+        text-transform: uppercase;
+        border: none;
+        margin-right: 10px;
+        @include f700;
+        color: #000;
+        text-align: center;
+        box-shadow: 0px 2px 2px 0px rgba(118, 174, 54, 0.75);
+    }
+}
+.create-acc{
+    margin-top: 19px;
+    padding: 15px 0 15px 28px;
+    text-align: center;
+    width: 245px;
+    background-color: #76ae36;
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    &::before{
+        content: "\f044";
+        font-family: 'icomoon';
+        position: absolute;
+        top: 15px;
+        left: 30px;
+    }
+}
+.lost-pass{
+    display: block;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 18px;
+}
+.fancybox-button svg path{
+    color: #fff;
+}
+/* end modal */
 
 /* start search */
 .search{
@@ -59,6 +400,12 @@
     background-size: cover;
     background-position: center;
     min-height: 533px;
+        &.page-search{
+            min-height: 230px;
+            .search__inner{
+                padding: 55px 0 70px;
+            }
+        }
 }
 .search__inner{
     padding: 155px 0 100px;
@@ -310,6 +657,7 @@
         font-size: 24px;
         margin-bottom: 25px;
         @include f500;
+        transition: all .5s
     }
     &-text{
         font-size: 15px;
@@ -532,3 +880,5 @@
     }
 }
 /* footer end */
+
+@import 'media';
